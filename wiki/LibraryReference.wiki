@@ -57,7 +57,7 @@ It works similarly to _encode_. Optional pars are the same except:
 
  * _unescape_ - Unescape encryptedText before decrypt it.
 
-== Passpack.JSON.parse(jsonString) ==
+== Passpack.JSON.parse(_jsonString_) ==
 
 The Passpack.JSON static object is a variation of the Douglas Crockford JSON object defined in json2.js library. The _parse_ method adds to original method the automatical conversion of date strings in ISO format to Date objects. To parse a JSON string:
 
@@ -65,6 +65,52 @@ The Passpack.JSON static object is a variation of the Douglas Crockford JSON obj
 
 If you have thoughts to develope a Passpack-compatible application you need this JSON variant.
 
-== Passpack.JSON.stringify(object) ==
+== Passpack.JSON.stringify(_object_) ==
 
 It is the Crockford JSON method to convert and Object in a JSON string.
+
+== Passpack.getBits(password) ==
+
+Returns the estimated value in bits of a password.
+
+== Passpack.passGenerator(_pars_,_numberOfChars_) ==
+
+It generates a random password. Pars specifies the intervals of chars to be used.
+
+ * lcase: lower case letters
+ * ucase: upper case letters
+ * nume: numbers
+ * symb: symbols
+ * space: high ascii chars
+
+For example, to generate a random pass of 16 characters using letters and high ascii chars:
+
+{{{
+  Passpack.passGenerator({
+    ucase: 1,
+    lcase: 1,
+    space: 1
+  }, 16);
+}}}
+
+== Passpack.simplePassGenerator(_numberOfChars_) ==
+
+Generates a password using letters and numbers.
+
+== Passpack.genRandomKey([_size_,_salt_]) ==
+
+Generates a hashed key of _size_ chars, using an optional _salt_. By default generates a 256-bit key (64 chars). If you need a 512-bits key you may concatenate two 256-bit keys.
+
+== Passpack.hashx(_str_,[_nohex_,_full_]) ==
+
+Make a modified hash using SHA256.
+_nohex_ produces a standard string instead of an exadecimal string
+_full_ produces a 64 chars strings, instead of a default 32 chars modified string
+
+To generate a standard SHA256 hash of the string {{{myStr}}} you can call {{{Passpack.hashx(myStr,false,true);}}}
+
+To generate a non-standard 128-bit hash you can call
+{{{Passpack.hashx(myStr);}}}
+
+
+= Enjoy Passpack Host-Proof Hosting ==
