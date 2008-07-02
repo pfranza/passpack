@@ -1,8 +1,8 @@
-#summary A brief introduction to how to use Passpack Host-Proof Hosting JS Library
+#summary A brief introduction to how to use the Passpack Host-Proof Hosting JS Library
 
 = Installation =
 
-Simply, put into your HTML code the following line:
+Simply, put the following line into your HTML code:
 
 {{{<script type="text/javascript" src="passpack.js"></script>}}}
 
@@ -15,7 +15,7 @@ To encode the string {{{str}}} with the key {{{mykey}}} using AES 256-bit use:
 
 {{{Passpack.encode("AES",str,mykey)}}}
 
-By default the result of the encryption is Base64-encoded. To change default settings you can use _optionalPars_. They must be as the following:
+By default the result of the encryption is Base64-encoded. To change the default settings you can use _optionalPars_. They must be as the following:
 {{{
   {
     nbits:  128,
@@ -32,17 +32,17 @@ For example, to encode the string {{{str}}} using AES 192-bit, without Base64 en
   });
 }}}
 
-*Supported algorythm:*
+*Supported algorithms:*
 
  * _UTF8_
  * _Base64+_ (this replace all '+' with '!' to avoid problems with post XMLHTTPRequest)
  * _AES_ (128, 192 or 256-bit)
  * _xxTEA_
- * _RC4_ (this is modified to improve security)
+ * _RC4_ (modified to improve security)
 
 *Optional parameters:*
 
- * _nbits_ : number of bits, if applicably
+ * _nbits_ : number of bits, if applicable
  * _noBase64_ : disable Base64 encoding of encrypted string
  * _escape_ : escape the encrypted string (after Base64 encoding)
  * _rounds_ : number of rounds in RC4
@@ -53,21 +53,22 @@ Passpack.AES and Passpack.xxTEA are based on Chris Veness's [http://www.movable-
 
 == Passpack.decode(_algorithm_,_plaintext_[,_key_,_optionalPars_]) ==
 
-It works similarly to _encode_. Optional pars are the same except:
+Works similar to _encode_ with the same Optional pars, except:
 
- * _unescape_ - Unescape encryptedText before decrypt it.
+ * _unescape_ - Unescape encryptedText before decrypting it.
+ * _escape_ - does not exist (not needed)
 
 == Passpack.JSON.parse(_jsonString_) ==
 
-The Passpack.JSON static object is a variation of the Douglas Crockford JSON object defined in json2.js library. The _parse_ method adds to original method the automatical conversion of date strings in ISO format to Date objects. To parse a JSON string:
+The Passpack.JSON static object is a variation of the Douglas Crockford JSON object defined in json2.js library. In addition to the original method, the _parse_ method adds automatic conversion of date strings from the ISO format into Date objects. To parse a JSON string:
 
 {{{Passpack.JSON.parse(jsonStr);}}}
 
-If you have thoughts to develope a Passpack-compatible application you need this JSON variant.
+If you are considering developing a Passpack compatible application, you will need this JSON variant in order to properly manage the data.
 
 == Passpack.JSON.stringify(_object_) ==
 
-It is the Crockford JSON method to convert and Object in a JSON string.
+The Crockford JSON method to convert an Object into a JSON string.
 
 == Passpack.getBits(password) ==
 
@@ -75,7 +76,7 @@ Returns the estimated value in bits of a password.
 
 == Passpack.passGenerator(_pars_,_numberOfChars_) ==
 
-It generates a random password. Pars specifies the intervals of chars to be used.
+Generates a random password. _pars_ specifies the character interval to be used.
 
  * lcase: lower case letters
  * ucase: upper case letters
@@ -83,7 +84,7 @@ It generates a random password. Pars specifies the intervals of chars to be used
  * symb: symbols
  * space: high ascii chars
 
-For example, to generate a random pass of 16 characters using letters and high ascii chars:
+For example, to generate a random password of 16 characters, using letters and high ascii chars:
 
 {{{
   Passpack.passGenerator({
@@ -99,13 +100,14 @@ Generates a password using letters and numbers.
 
 == Passpack.genRandomKey([_size_,_salt_]) ==
 
-Generates a hashed key of _size_ chars, using an optional _salt_. By default generates a 256-bit key (64 chars). If you need a 512-bits key you may concatenate two 256-bit keys.
+Generates a hashed key of _size_ chars, using an optional _salt_. By default generates a 256-bit key (64 chars). If you need longer key, you can concatenate two or more 256-bit keys. For example, to achieve a 512-bit key, concatenate two 256-bit keys.
 
 == Passpack.hashx(_str_,[_nohex_,_full_]) ==
 
 Make a modified hash using SHA256.
-_nohex_ produces a standard string instead of an exadecimal string
-_full_ produces a 64 chars strings, instead of a default 32 chars modified string
+
+_nohex_ produces a standard string instead of an hexadecimal string
+_full_ produces a 64 char strings, instead of a default 32 char modified string
 
 To generate a standard SHA256 hash of the string {{{myStr}}} you can call {{{Passpack.hashx(myStr,false,true);}}}
 
