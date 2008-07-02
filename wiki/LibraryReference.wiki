@@ -1,4 +1,4 @@
-#summary A brief introduction to how to use Passpack Hosti-Proof Hosting JS Library
+#summary A brief introduction to how to use Passpack Host-Proof Hosting JS Library
 
 = Installation =
 
