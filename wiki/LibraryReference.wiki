@@ -112,5 +112,6 @@ To generate a standard SHA256 hash of the string {{{myStr}}} you can call {{{Pas
 To generate a non-standard 128-bit hash you can call
 {{{Passpack.hashx(myStr);}}}
 
+Passpack.SHA256 is based on [http://anmar.eu.org/ Angel Marin]'s SHA-256.
 
 = Enjoy Passpack Host-Proof Hosting ==
