@@ -26,28 +26,29 @@ By default the result of the encryption is Base64-encoded. To change default set
 For example, to encode the string {{{str}}} using AES 192-bit, without Base64 encoding you have to run:
 
 {{{
-Passpack.encode("AES",str,mykey,{
-  nbits:    128,
-  noBase64: true
-});
+  Passpack.encode("AES",str,mykey,{
+    nbits:    128,
+    noBase64: true
+  });
 }}}
 
 *Supported algorythm:*
 
- * UTF8
- * Base64+ (this replace all '+' with '!' to avoid problems with post XMLHTTPRequest)
- * AES (128, 192 or 256-bit)
- * xxTEA
- * RC4
+ * _UTF8_
+ * _Base64+_ (this replace all '+' with '!' to avoid problems with post XMLHTTPRequest)
+ * _AES_ (128, 192 or 256-bit)
+ * _xxTEA_
+ * _RC4_ (this is modified to improve security)
 
 *Optional parameters:*
 
  * _nbits_ : number of bits, if applicably
  * _noBase64_ : disable Base64 encoding of encrypted string
  * _escape_ : escape the encrypted string (after Base64 encoding)
+ * _rounds_ : number of rounds in RC4
 
-==== Passpack.UTF8 and Passpack.Base64 are based on Utf8 and Base64 scripts by WebToolkit.
-Passpack.AES and Passpack.xxTEA are based on Chris Veness's AES and BlockTEA implementations. ====
+Passpack.UTF8 and Passpack.Base64 are based on Utf8 and Base64 scripts by [http://www.webtoolkit.info WebToolkit].
+Passpack.AES and Passpack.xxTEA are based on Chris Veness's [http://www.movable-type.co.uk/scripts/aes.html AES] and [http://www.movable-type.co.uk/scripts/tea-block.html BlockTEA] implementations.
 
 
 == Passpack.decode(_algorithm_,_plaintext_[,_key_,_optionalPars_]) ==
@@ -56,8 +57,14 @@ It works similarly to _encode_. Optional pars are the same except:
 
  * _unescape_ - Unescape encryptedText before decrypt it.
 
-== Passpack.JSON.parse ==
+== Passpack.JSON.parse(jsonString) ==
 
 The Passpack.JSON static object is a variation of the Douglas Crockford JSON object defined in json2.js library. The _parse_ method adds to original method the automatical conversion of date strings in ISO format to Date objects. To parse a JSON string:
 
 {{{Passpack.JSON.parse(jsonStr);}}}
+
+If you have thoughts to develope a Passpack-compatible application you need this JSON variant.
+
+== Passpack.JSON.stringify(object) ==
+
+It is the Crockford JSON method to convert and Object in a JSON string.
