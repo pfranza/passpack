@@ -106,7 +106,7 @@ Generates a hashed key of _size_ chars, using an optional _salt_. By default gen
 
 Make a modified hash using SHA256.
 
-_nohex_ produces a standard string instead of an hexadecimal string
+_nohex_ produces a standard string instead of an hexadecimal string.
 _full_ produces a 64 char strings, instead of a default 32 char modified string
 
 To generate a standard SHA256 hash of the string {{{myStr}}} you can call {{{Passpack.hashx(myStr,false,true);}}}
