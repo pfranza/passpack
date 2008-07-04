@@ -64,7 +64,7 @@ The Passpack.JSON static object is a variation of the Douglas Crockford JSON obj
 
 {{{Passpack.JSON.parse(jsonStr);}}}
 
-If you are considering developing a Passpack compatible application, you will need this JSON variant in order to properly manage the data.
+If you are considering developing a Passpack compatible application, you will need this JSON variant in order to properly manage dates.
 
 == Passpack.JSON.stringify(_object_) ==
 
