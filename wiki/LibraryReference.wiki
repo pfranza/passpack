@@ -102,7 +102,7 @@ Generates a password using letters and numbers.
 
 Generates a hashed key of _size_ chars, using an optional _salt_. By default generates a 256-bit key (64 chars). If you need longer key, you can concatenate two or more 256-bit keys. For example, to achieve a 512-bit key, concatenate two 256-bit keys.
 
-== Passpack.hashx(_str_,[_nohex_,_full_]) ==
+== Passpack.hashx(_str_[,_nohex_,_full_]) ==
 
 Make a modified hash using SHA256.
 
