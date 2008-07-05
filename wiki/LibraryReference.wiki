@@ -18,7 +18,7 @@ To encode the string {{{str}}} with the key {{{mykey}}} using AES 256-bit use:
 By default the result of the encryption is Base64-encoded. To change the default settings you can use _optionalPars_. They must be as the following:
 {{{
   {
-    nbits:  192,
+    nbits:  128,
     escape: true
   }
 }}}
@@ -27,7 +27,7 @@ For example, to encode the string {{{str}}} using AES 192-bit, without Base64 en
 
 {{{
   Passpack.encode("AES",str,mykey,{
-    nbits:    128,
+    nbits:    192,
     noBase64: true
   });
 }}}
