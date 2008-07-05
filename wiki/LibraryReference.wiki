@@ -70,11 +70,11 @@ If you are considering developing a Passpack compatible application, you will ne
 
 The Crockford JSON method to convert an Object into a JSON string.
 
-== Passpack.getBits(password) ==
+== Passpack.utils.getBits(password) ==
 
 Returns the estimated value in bits of a password.
 
-== Passpack.passGenerator(_pars_,_numberOfChars_) ==
+== Passpack.utils.passGenerator(_pars_,_numberOfChars_) ==
 
 Generates a random password. _pars_ specifies the character interval to be used.
 
@@ -87,32 +87,32 @@ Generates a random password. _pars_ specifies the character interval to be used.
 For example, to generate a random password of 16 characters, using letters and high ascii chars:
 
 {{{
-  Passpack.passGenerator({
+  Passpack.utils.passGenerator({
     ucase: 1,
     lcase: 1,
     space: 1
   }, 16);
 }}}
 
-== Passpack.simplePassGenerator(_numberOfChars_) ==
+== Passpack.utils.simplePassGenerator(_numberOfChars_) ==
 
 Generates a password using letters and numbers.
 
-== Passpack.genRandomKey([_size_,_salt_]) ==
+== Passpack.utils.genRandomKey([_size_,_salt_]) ==
 
 Generates a hashed key of _size_ chars, using an optional _salt_. By default generates a 256-bit key (64 chars). If you need longer key, you can concatenate two or more 256-bit keys. For example, to achieve a 512-bit key, concatenate two 256-bit keys.
 
-== Passpack.hashx(_str_[,_nohex_,_full_]) ==
+== Passpack.utils.hashx(_str_[,_nohex_,_full_]) ==
 
 Make a modified hash using SHA256.
 
 _nohex_ produces a standard string instead of an hexadecimal string.
 _full_ produces a 64 char strings, instead of a default 32 char modified string
 
-To generate a standard SHA256 hash of the string {{{myStr}}} you can call {{{Passpack.hashx(myStr,false,true);}}}
+To generate a standard SHA256 hash of the string {{{myStr}}} you can call {{{Passpack.utils.hashx(myStr,false,true);}}}
 
 To generate a non-standard 128-bit hash you can call
-{{{Passpack.hashx(myStr);}}}
+{{{Passpack.utils.hashx(myStr);}}}
 
 Passpack.SHA256 is based on [http://anmar.eu.org/ Angel Marin]'s SHA-256.
 
