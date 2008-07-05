@@ -18,7 +18,7 @@ To encode the string {{{str}}} with the key {{{mykey}}} using AES 256-bit use:
 By default the result of the encryption is Base64-encoded. To change the default settings you can use _optionalPars_. They must be as the following:
 {{{
   {
-    nbits:  128,
+    nbits:  192,
     escape: true
   }
 }}}
