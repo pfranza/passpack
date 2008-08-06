@@ -109,11 +109,6 @@ Make a modified hash using SHA256.
 _nohex_ produces a standard string instead of an hexadecimal string.
 _full_ produces a 64 char strings, instead of a default 32 char modified string
 
-To generate a standard SHA256 hash of the string {{{myStr}}} you can call {{{Passpack.utils.hashx(myStr,false,true);}}}
-
-To generate a non-standard 128-bit hash you can call
-{{{Passpack.utils.hashx(myStr);}}}
-
 Passpack.SHA256 is based on [http://anmar.eu.org/ Angel Marin]'s SHA-256.
 
 = Enjoy Passpack Host-Proof Hosting ==
