@@ -1,0 +1,112 @@
+# Installation #
+
+Simply, put the following line into your HTML code:
+
+`<script type="text/javascript" src="passpack.js"></script>`
+
+
+# Reference #
+
+## Passpack.encode(_algorithm_,_plaintext_[,_key_,_optionalPars_]) ##
+
+To encode the string `str` with the key `mykey` using AES 256-bit use:
+
+`Passpack.encode("AES",str,mykey)`
+
+By default the result of the encryption is Base64-encoded. To change the default settings you can use _optionalPars_. They must be as the following:
+```
+  {
+    nbits:  128,
+    escape: true
+  }
+```
+
+For example, to encode the string `str` using AES 192-bit, without Base64 encoding you have to run:
+
+```
+  Passpack.encode("AES",str,mykey,{
+    nbits:    192,
+    noBase64: true
+  });
+```
+
+**Supported algorithms:**
+
+  * _UTF8_
+  * _Base64+_ (this replace all '+' with '!' to avoid problems with post XMLHTTPRequest)
+  * _AES_ (128, 192 or 256-bit)
+  * _xxTEA_
+  * _RC4_ (modified to improve security)
+
+**Optional parameters:**
+
+  * _nbits_ : number of bits, if applicable
+  * _noBase64_ : disable Base64 encoding of encrypted string
+  * _escape_ : escape the encrypted string (after Base64 encoding)
+  * _rounds_ : number of rounds in RC4
+
+Passpack.UTF8 and Passpack.Base64 are based on Utf8 and Base64 scripts by [WebToolkit](http://www.webtoolkit.info).
+Passpack.AES and Passpack.xxTEA are based on Chris Veness's [AES](http://www.movable-type.co.uk/scripts/aes.html) and [BlockTEA](http://www.movable-type.co.uk/scripts/tea-block.html) implementations.
+
+
+## Passpack.decode(_algorithm_,_plaintext_[,_key_,_optionalPars_]) ##
+
+Works similar to _encode_ with the same Optional pars, except:
+
+  * _unescape_ - Unescape encryptedText before decrypting it.
+  * _escape_ - does not exist (not needed)
+
+## Passpack.JSON.parse(_jsonString_) ##
+
+The Passpack.JSON static object is a variation of the Douglas Crockford JSON object defined in json2.js library. In addition to the original method, the _parse_ method adds automatic conversion of date strings from the ISO format into Date objects. To parse a JSON string:
+
+`Passpack.JSON.parse(jsonStr);`
+
+If you are considering developing a Passpack compatible application, you will need this JSON variant in order to properly manage dates.
+
+## Passpack.JSON.stringify(_object_) ##
+
+The Crockford JSON method to convert an Object into a JSON string.
+
+## Passpack.utils.getBits(password) ##
+
+Returns the estimated value in bits of a password.
+
+## Passpack.utils.passGenerator(_pars_,_numberOfChars_) ##
+
+Generates a random password. _pars_ specifies the character interval to be used.
+
+  * lcase: lower case letters
+  * ucase: upper case letters
+  * nume: numbers
+  * symb: symbols
+  * space: high ascii chars
+
+For example, to generate a random password of 16 characters, using letters and high ascii chars:
+
+```
+  Passpack.utils.passGenerator({
+    ucase: 1,
+    lcase: 1,
+    space: 1
+  }, 16);
+```
+
+## Passpack.utils.simplePassGenerator(_numberOfChars_) ##
+
+Generates a password using letters and numbers.
+
+## Passpack.utils.genRandomKey([_size_,_salt_]) ##
+
+Generates a hashed key of _size_ chars, using an optional _salt_. By default generates a 256-bit key (64 chars). If you need longer key, you can concatenate two or more 256-bit keys. For example, to achieve a 512-bit key, concatenate two 256-bit keys.
+
+## Passpack.utils.hashx(_str_[,_nohex_,_full_]) ##
+
+Make a modified hash using SHA256.
+
+_nohex_ produces a standard string instead of an hexadecimal string.
+_full_ produces a 64 char strings, instead of a default 32 char modified string
+
+Passpack.SHA256 is based on [Angel Marin](http://anmar.eu.org/)'s SHA-256.
+
+# Enjoy Passpack Host-Proof Hosting #
